@@ -30,8 +30,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(path.join(__dirname, '/index.html')),
+      template: path.resolve(path.join(__dirname, 'src', '/index.html')),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+
+  resolve: {
+    alias: {
+      '@containers': path.resolve(__dirname, 'src', 'containers'),
+      '@components': path.resolve(__dirname, 'src', 'components'),
+    },
+    extensions: ['.js'],
+  },
 };
