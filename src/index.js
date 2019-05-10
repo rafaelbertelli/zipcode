@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 
 import './style/main.less';
 
-class Welcome extends React.Component {
+class App extends React.Component {
   render() {
-    return <h1>Hello World to Luizalabs</h1>;
+    return <h1>Hello World!</h1>;
   }
 }
 
-ReactDOM.render(<Welcome />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
+
+module.hot.accept();
