@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(path.join(__dirname, 'src', '/index.html')),
+      template: path.resolve(path.join(__dirname, '/index.html')),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
