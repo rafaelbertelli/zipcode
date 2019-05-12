@@ -34,7 +34,9 @@ module.exports = {
       template: path.resolve(path.join(__dirname, 'src', '/index.html')),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(__dirname, './.env'),
+    }),
   ],
 
   resolve: {
