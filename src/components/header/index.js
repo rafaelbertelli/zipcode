@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.less';
 
 const Header = () => (
-  <div className="Header">
+  <div className="HeaderComponent">
     <h3 className="title">Consultar</h3>
     <form>
       <label className="label">CEP</label>
