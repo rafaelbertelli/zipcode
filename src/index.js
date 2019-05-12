@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from '@containers/home';
 
-import './style/main.less';
+import './styles/main.less';
 
 class App extends React.Component {
   render() {

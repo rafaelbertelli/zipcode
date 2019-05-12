@@ -1,0 +1,65 @@
+.Header {
+  background-color: #c7c7c7;
+  padding: 25px;
+  color: #495057;
+  margin-bottom: 15px;
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .input {
+    height: 35px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+      outline: 0;
+      border-color: #80bdff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .button {
+    color: #fff;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    background-color: #007bff;
+    border-color: #007bff;
+    border: 1px solid transparent;
+    padding: 8px 15px;
+    border-radius: 3px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:active {
+      color: #fff;
+      background-color: #0062cc;
+      border-color: #005cbf;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+      outline: 0;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+  }
+}

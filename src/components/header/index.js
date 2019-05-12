@@ -1,5 +1,18 @@
 import React from 'react';
 
-const Header = () => <h1>Eu sou um header</h1>;
+import './styles.less';
+
+const Header = () => (
+  <div className="Header">
+    <h3 className="title">Consultar</h3>
+    <form>
+      <label className="label">CEP</label>
+      <input className="input" name="zipcode" type="number" />
+      <button className="button" type="submit">
+        Buscar
+      </button>
+    </form>
+  </div>
+);
 
 export default Header;
