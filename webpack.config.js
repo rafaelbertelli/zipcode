@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index'),
@@ -30,19 +31,17 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(path.join(__dirname, 'src', '/index.html')),
-    }),
+    new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv({
-      path: path.resolve(__dirname, './.env'),
-    }),
+    new Dotenv({ path: path.resolve(__dirname, './.env') }),
+    new HtmlWebpackPlugin({ template: path.resolve(path.join(__dirname, 'src', '/index.html')) }),
   ],
 
   resolve: {
     alias: {
       '@containers': path.resolve(__dirname, 'src', 'containers'),
       '@components': path.resolve(__dirname, 'src', 'components'),
+      '@services': path.resolve(__dirname, 'src', 'services'),
     },
     extensions: ['.js'],
   },
