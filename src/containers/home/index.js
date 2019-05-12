@@ -5,6 +5,7 @@ import Notifications, { notify } from 'react-notify-toast';
 
 import Header from '@components/header';
 import Map from '@components/map';
+import GoogleMaps from '@components/map/googleMaps';
 import { getAddress } from '@services';
 
 import './styles.less';
@@ -26,11 +27,13 @@ class Home extends Component {
     this.setState({ isLoading: true });
 
     getAddress(this.state.zipcode)
-      .then(res => this.setState({ completeAddress: res }))
-      .catch(err => {
-        console.error(err.message);
-        notify.show(err.message, 'error', 3000);
+      .then(res => {
+        console.log(res);
+        debugger;
+
+        // this.setState({ completeAddress: res })
       })
+      .catch(err => notify.show(err.message, 'error', 3000))
       .finally(() => this.setState({ isLoading: false }));
   };
 
@@ -43,7 +46,9 @@ class Home extends Component {
           handleInput={this.handleInput}
           zipcode={this.state.zipcode}
         />
-        <Map />
+        <Map completeAddress={this.state.completeAddress}>
+          <GoogleMaps isMarkerShown onMarkerClick={this.handleMarkerClick} />
+        </Map>
         <Notifications />
       </div>
     );
