@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 const axios = require('axios');
 const jsonpAdapter = require('axios-jsonp');
 
@@ -47,7 +46,7 @@ export const getAddress = zipcode => {
 
       const { cep, logradouro, bairro, localidade, uf } = res.data;
 
-      let latLng = {};
+      let latLng = { lat: -22.5937, lng: -46.5277 };
       try {
         latLng = await getLatLong({ cep, logradouro, bairro, localidade, uf });
       } catch {
