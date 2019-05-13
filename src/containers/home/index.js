@@ -39,7 +39,6 @@ class Home extends Component {
 
   render() {
     const { completeAddress, isLoading } = this.state;
-    const { latLng } = completeAddress;
 
     return (
       <div className="Home">
@@ -50,9 +49,9 @@ class Home extends Component {
           isLoading={isLoading}
         />
 
-        {!!latLng && (
+        {!!completeAddress.latLng && (
           <Map completeAddress={completeAddress} handleClose={this.handleClose}>
-            <GoogleMaps latLng={latLng} />
+            <GoogleMaps latLng={completeAddress.latLng} />
           </Map>
         )}
 
