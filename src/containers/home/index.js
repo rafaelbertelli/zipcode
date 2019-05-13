@@ -32,7 +32,7 @@ class Home extends Component {
           showMaps: true,
         });
       })
-      .catch(err => notify.show(err.message, 'error', 3000))
+      .catch(err => notify.show(err, 'error', 3000))
       .finally(() => this.setState({ isLoading: false }));
   };
 

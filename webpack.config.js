@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index'),
+  entry: ['@babel/polyfill', path.join(__dirname, 'src', 'index')],
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/',
