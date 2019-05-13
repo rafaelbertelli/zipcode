@@ -65,8 +65,5 @@ export const getAddress = zipcode => {
 
       return Promise.resolve(completeAddress);
     })
-    .catch(err => {
-      debugger;
-      Promise.reject(err.message);
-    });
+    .catch(err => Promise.reject(err.message));
 };

@@ -49,7 +49,7 @@ class Home extends Component {
           isLoading={isLoading}
         />
 
-        {!!completeAddress.latLng && (
+        {!!completeAddress && !!completeAddress.latLng && (
           <Map completeAddress={completeAddress} handleClose={this.handleClose}>
             <GoogleMaps latLng={completeAddress.latLng} />
           </Map>
