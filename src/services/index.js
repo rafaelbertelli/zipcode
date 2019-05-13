@@ -30,10 +30,9 @@ export const getAddress = zipcode => {
     return Promise.reject('O campo CEP está vazio');
   }
 
-  /**
-   * @todo
-   * validação de permitir somente numero
-   */
+  if (!Number(zipcode.replace(/-/g, ''))) {
+    return Promise.reject('O CEP está num formato inválido');
+  }
 
   return axios({
     url: `https://viacep.com.br/ws/${zipcode}/json/?callback=myfn`,
