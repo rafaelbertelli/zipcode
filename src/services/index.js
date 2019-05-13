@@ -26,16 +26,27 @@ const getLatLong = ({ cep, logradouro, bairro, localidade, uf }) => {
 };
 
 export const getAddress = zipcode => {
-  if (!zipcode) {
+  const zipDigits = zipcode.replace(/-/g, '').replace(/\s/g, '');
+  const zipLength = zipDigits.length;
+
+  if (zipLength === 0) {
     return Promise.reject('O campo CEP está vazio');
   }
 
-  if (!Number(zipcode.replace(/-/g, ''))) {
+  if (zipLength < 8) {
+    return Promise.reject('O CEP está incompleto');
+  }
+
+  if (zipLength > 8) {
+    return Promise.reject('O CEP tem digitos além do esperado');
+  }
+
+  if (!Number(zipDigits)) {
     return Promise.reject('O CEP está num formato inválido');
   }
 
   return axios({
-    url: `https://viacep.com.br/ws/${zipcode}/json/?callback=myfn`,
+    url: `https://viacep.com.br/ws/${zipDigits}/json/?callback=myfn`,
     adapter: jsonpAdapter,
   })
     .then(async res => {
