@@ -1,5 +1,3 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import Notifications, { notify } from 'react-notify-toast';
 
@@ -14,6 +12,7 @@ class Home extends Component {
   state = {
     zipcode: '',
     completeAddress: {},
+    showMaps: false,
   };
 
   handleInput = e => {
@@ -28,17 +27,26 @@ class Home extends Component {
 
     getAddress(this.state.zipcode)
       .then(res => {
-        console.log(res);
-        debugger;
-
-        // this.setState({ completeAddress: res })
+        this.setState({
+          completeAddress: res,
+          showMaps: true,
+        });
       })
       .catch(err => notify.show(err.message, 'error', 3000))
       .finally(() => this.setState({ isLoading: false }));
   };
 
+  handleClose = () => {
+    this.setState({
+      showMaps: false,
+      zipcode: '',
+      completeAddress: {},
+    });
+  };
+
   render() {
-    console.log(this.state);
+    const { completeAddress, showMaps } = this.state;
+
     return (
       <div className="Home">
         <Header
@@ -46,9 +54,11 @@ class Home extends Component {
           handleInput={this.handleInput}
           zipcode={this.state.zipcode}
         />
-        <Map completeAddress={this.state.completeAddress}>
+
+        <Map completeAddress={completeAddress} showMaps={showMaps} handleClose={this.handleClose}>
           <GoogleMaps isMarkerShown onMarkerClick={this.handleMarkerClick} />
         </Map>
+
         <Notifications />
       </div>
     );
