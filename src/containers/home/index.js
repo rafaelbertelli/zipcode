@@ -6,7 +6,7 @@ import Map from '@components/map';
 import GoogleMaps from '@components/map/googleMaps';
 import { getAddress } from '@services';
 
-import './styles.less';
+import { HomeComponent } from './styled';
 
 class Home extends Component {
   state = {
@@ -41,7 +41,7 @@ class Home extends Component {
     const { completeAddress, isLoading } = this.state;
 
     return (
-      <div className="Home">
+      <HomeComponent>
         <Header
           handleSearch={this.handleSearch}
           handleInput={this.handleInput}
@@ -56,7 +56,7 @@ class Home extends Component {
         )}
 
         <Notifications />
-      </div>
+      </HomeComponent>
     );
   }
 }

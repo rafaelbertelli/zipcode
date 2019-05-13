@@ -1,35 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './styles.less';
+import { HeaderComponent, Title, Form, Label, Input, Button } from './styled';
 
 const Header = props => (
-  <div className="HeaderComponent">
-    <h3 className="title">Consultar</h3>
-    <form className="form">
-      <label className="label">CEP</label>
-      <input
+  <HeaderComponent>
+    <Title>Consultar</Title>
+    <Form>
+      <Label>CEP</Label>
+      <Input
         className="input"
         name="zipcode"
         type="text"
         onChange={props.handleInput}
         value={props.zipcode}
       />
-      <button
+      <Button
         className="button"
         type="submit"
         onClick={props.handleSearch}
         disabled={props.isLoading}
       >
         Buscar
-      </button>
-    </form>
-  </div>
+      </Button>
+    </Form>
+  </HeaderComponent>
 );
 
 Header.propTypes = {
-  handleInput: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
+  handleInput: PropTypes.func,
+  handleSearch: PropTypes.func,
   zipcode: PropTypes.string,
   isLoading: PropTypes.bool,
 };

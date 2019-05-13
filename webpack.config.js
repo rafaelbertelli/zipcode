@@ -33,9 +33,8 @@ module.exports = {
   plugins: [
     new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv({ path: path.resolve(__dirname, '.env'), systemvars: true, silent: false }),
+    new Dotenv({ path: path.resolve(__dirname, '.env'), safe: true }),
     new HtmlWebpackPlugin({ template: path.resolve(path.join(__dirname, 'src', '/index.html')) }),
-    new webpack.EnvironmentPlugin(['MAPS_KEY', 'GEOCODE_KEY']),
   ],
 
   resolve: {
