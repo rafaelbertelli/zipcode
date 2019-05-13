@@ -15,7 +15,12 @@ const Header = props => (
         onChange={props.handleInput}
         value={props.zipcode}
       />
-      <button className="button" type="submit" onClick={props.handleSearch}>
+      <button
+        className="button"
+        type="submit"
+        onClick={props.handleSearch}
+        disabled={props.isLoading}
+      >
         Buscar
       </button>
     </form>
@@ -26,6 +31,7 @@ Header.propTypes = {
   handleInput: PropTypes.func.isRequired,
   handleSearch: PropTypes.func.isRequired,
   zipcode: PropTypes.string,
+  isLoading: PropTypes.bool,
 };
 
 export default Header;

@@ -12,7 +12,6 @@ class Home extends Component {
   state = {
     zipcode: '',
     completeAddress: {},
-    showMaps: false,
   };
 
   handleInput = e => {
@@ -26,26 +25,21 @@ class Home extends Component {
     this.setState({ isLoading: true });
 
     getAddress(this.state.zipcode)
-      .then(res => {
-        this.setState({
-          completeAddress: res,
-          showMaps: true,
-        });
-      })
+      .then(res => this.setState({ completeAddress: res }))
       .catch(err => notify.show(err, 'error', 3000))
       .finally(() => this.setState({ isLoading: false }));
   };
 
   handleClose = () => {
     this.setState({
-      showMaps: false,
       zipcode: '',
       completeAddress: {},
     });
   };
 
   render() {
-    const { completeAddress, showMaps } = this.state;
+    const { completeAddress, isLoading } = this.state;
+    const { latLng } = completeAddress;
 
     return (
       <div className="Home">
@@ -53,11 +47,14 @@ class Home extends Component {
           handleSearch={this.handleSearch}
           handleInput={this.handleInput}
           zipcode={this.state.zipcode}
+          isLoading={isLoading}
         />
 
-        <Map completeAddress={completeAddress} showMaps={showMaps} handleClose={this.handleClose}>
-          <GoogleMaps isMarkerShown onMarkerClick={this.handleMarkerClick} />
-        </Map>
+        {!!latLng && (
+          <Map completeAddress={completeAddress} handleClose={this.handleClose}>
+            <GoogleMaps latLng={latLng} />
+          </Map>
+        )}
 
         <Notifications />
       </div>

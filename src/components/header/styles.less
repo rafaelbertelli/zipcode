@@ -30,7 +30,7 @@
     border: 1px solid #ced4da;
     border-radius: 3px;
 
-    @media screen and (max-width: 404px) {
+    @media screen and (max-width: 425px) {
       width: 90px;
     }
   }
@@ -55,10 +55,14 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-    &:hover {
+    &:hover:not(:disabled) {
       color: #fff;
       background-color: #0069d9;
       border-color: #0062cc;
+    }
+
+    &:disabled {
+      background: #dddddd;
     }
   }
 }

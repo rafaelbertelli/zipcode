@@ -1,7 +1,8 @@
+/* eslint-disable no-debugger */
 const axios = require('axios');
 const jsonpAdapter = require('axios-jsonp');
 
-const uriParser = ({ cep, logradouro, bairro, localidade, uf }) => {
+const urnParser = ({ cep, logradouro, bairro, localidade, uf }) => {
   let partials = [];
 
   !!cep && partials.push(cep);
@@ -10,34 +11,37 @@ const uriParser = ({ cep, logradouro, bairro, localidade, uf }) => {
   !!localidade && partials.push(localidade);
   !!uf && partials.push(uf);
 
-  const formatedUri = encodeURIComponent(partials.toString());
+  const formatedUrn = encodeURIComponent(partials.toString());
 
-  return formatedUri;
+  return formatedUrn;
 };
 
 const getLatLong = ({ cep, logradouro, bairro, localidade, uf }) => {
-  const uri = uriParser({ cep, logradouro, bairro, localidade, uf });
+  const url = 'https://maps.googleapis.com/maps/api/geocode/json';
+  const urn = urnParser({ cep, logradouro, bairro, localidade, uf });
+  const uri = `${url}?address=${urn}&key=${process.env.GEOCODE_KEY}`;
 
-  return axios({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${uri}&key=${
-      process.env.GEOCODE_KEY
-    }`,
-  })
+  return axios({ url: uri })
     .then(res => res.data.results[0].geometry.location)
     .catch(Promise.reject);
 };
 
 export const getAddress = zipcode => {
   if (!zipcode) {
-    return Promise.reject(new Error('O campo CEP está vazio'));
+    return Promise.reject('O campo CEP está vazio');
   }
+
+  /**
+   * @todo
+   * validação de permitir somente numero
+   */
 
   return axios({
     url: `https://viacep.com.br/ws/${zipcode}/json/?callback=myfn`,
     adapter: jsonpAdapter,
   })
     .then(async res => {
-      if (res.status !== 200) {
+      if (res.status !== 200 || res.data.erro) {
         return Promise.reject(new Error('Não foi possível localizar este cep.'));
       }
 
@@ -61,5 +65,8 @@ export const getAddress = zipcode => {
 
       return Promise.resolve(completeAddress);
     })
-    .catch(err => Promise.reject(err.message));
+    .catch(err => {
+      debugger;
+      Promise.reject(err.message);
+    });
 };
