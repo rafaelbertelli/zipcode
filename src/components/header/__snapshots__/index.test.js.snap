@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Test Suite Should match snapshot 1`] = `
+<styled.div>
+  <styled.h3>
+    Consultar
+  </styled.h3>
+  <styled.form>
+    <styled.label>
+      CEP
+    </styled.label>
+    <styled.input
+      className="input"
+      name="zipcode"
+      type="text"
+    />
+    <styled.button
+      className="button"
+      type="submit"
+    >
+      Buscar
+    </styled.button>
+  </styled.form>
+</styled.div>
+`;
