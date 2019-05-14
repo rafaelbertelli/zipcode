@@ -8,14 +8,14 @@ export const MapComponent = styled.div`
 
 export const ButtonClose = styled.button`
   cursor: pointer;
-  border: none;
   background: none;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 20px;
+  border: none;
   height: 20px;
   opacity: 0.3;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
 
   &:hover {
     opacity: 1;
@@ -23,13 +23,13 @@ export const ButtonClose = styled.button`
 
   &:before,
   &:after {
-    position: absolute;
-    content: ' ';
-    top: 0;
-    left: 10px;
-    height: 20px;
-    width: 2px;
     background-color: #333;
+    content: ' ';
+    height: 20px;
+    left: 10px;
+    position: absolute;
+    top: 0;
+    width: 2px;
   }
   &:before {
     transform: rotate(45deg);

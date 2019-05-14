@@ -1,5 +1,5 @@
 {
-  "name": "zipcode",
+  "name": "addressfinder",
   "version": "1.0.0",
   "description": "Search for an address from Google Maps API",
   "main": "index.js",
