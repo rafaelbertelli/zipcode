@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import InputMask from 'react-input-mask';
-
 import { HeaderComponent, Title, Form, Label, Input, Button } from './styled';
 
 const Header = props => (
