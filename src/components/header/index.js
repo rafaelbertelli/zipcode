@@ -18,14 +18,6 @@ const Header = props => (
         mask="99999-999"
         maskChar={null}
       />
-
-      {/* <Input
-        className="input"
-        name="zipcode"
-        type="text"
-        onChange={props.handleInput}
-        value={props.zipcode}
-      /> */}
       <Button
         className="button"
         type="submit"
