@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import InputMask from 'react-input-mask';
 
 export const HeaderComponent = styled.div`
   background-color: #c7c7c7;
@@ -21,7 +22,7 @@ export const Label = styled.label`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.input`
+export const Input = styled(InputMask)`
   @media screen and (max-width: 425px) {
     width: 90px;
   }

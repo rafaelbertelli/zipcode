@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import InputMask from 'react-input-mask';
+
 import { HeaderComponent, Title, Form, Label, Input, Button } from './styled';
 
 const Header = props => (
@@ -13,7 +15,17 @@ const Header = props => (
         type="text"
         onChange={props.handleInput}
         value={props.zipcode}
+        mask="99999-999"
+        maskChar={null}
       />
+
+      {/* <Input
+        className="input"
+        name="zipcode"
+        type="text"
+        onChange={props.handleInput}
+        value={props.zipcode}
+      /> */}
       <Button
         className="button"
         type="submit"
