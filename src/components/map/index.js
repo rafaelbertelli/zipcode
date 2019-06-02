@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MapComponent, ButtonClose, SuperScription } from './styled';
+import { MapComponent, ButtonClose, SuperScription } from './styles';
 
 const Map = props => {
   const { children, completeAddress, handleClose } = props;

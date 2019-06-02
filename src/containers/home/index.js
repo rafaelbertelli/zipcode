@@ -6,7 +6,7 @@ import Map from '@components/map';
 import GoogleMaps from '@components/map/googleMaps';
 import { getAddress } from '@services';
 
-import { HomeComponent } from './styled';
+import { HomeComponent } from './styles';
 
 class Home extends Component {
   state = {

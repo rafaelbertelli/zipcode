@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HeaderComponent, Title, Form, Label, Input, Button } from './styled';
+import { HeaderComponent, Title, Form, Label, Input, Button } from './styles';
 
 const Header = props => (
   <HeaderComponent>
